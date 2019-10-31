@@ -1,32 +1,16 @@
 <template>
   <div class="sc-header" :style="{background: colors.header.bg, color: colors.header.text}">
-    <slot>
-      <img class="sc-header--img" :src="imageUrl" alt="" v-if="imageUrl" />
-      <div v-if="!disableUserListToggle" class="sc-header--title enabled" @click="toggleUserList"> {{title}} </div>
-      <div v-else class="sc-header--title"> {{title}} </div>
-    </slot>
-      <div class="sc-header--close-button" @click="onClose">
-        <img :src="icons.close.img" :alt="icons.close.name" />
-      </div>
+    <img class="sc-header--img" :src="imageUrl" alt="" v-if="imageUrl" />
+    <div class="sc-header--title" @click="onClose"> {{title}} </div>
+    <div class="sc-header--close-button" @click="onClose">
+      <img src="./assets/close-icon.png" alt="" />
+    </div>
   </div>
 </template>
 <script>
 
-import CloseIcon from './assets/close-icon-big.png'
-
 export default {
   props: {
-    icons:{
-      type: Object,
-      default: function () {
-        return {
-          close:{
-            img: CloseIcon,
-            name: 'default',
-          },
-        }
-      }
-    },
     imageUrl: {
       type: String,
       required: true
@@ -41,16 +25,14 @@ export default {
     colors: {
       type: Object,
       required: true
-    },
-    disableUserListToggle: {
-      type: Boolean,
-      default: false
     }
   },
   methods: {
     toggleUserList() {
       this.inUserList = !this.inUserList
       this.$emit("userList", this.inUserList)
+      //Overwritting for me
+
     }
   },
   data() {
@@ -83,15 +65,11 @@ export default {
   padding: 10px;
   flex: 1;
   user-select: none;
-  font-size: 20px;
-}
-
-.sc-header--title.enabled {
   cursor: pointer;
   border-radius: 5px;
 }
 
-.sc-header--title.enabled:hover {
+.sc-header--title:hover {
   box-shadow: 0px 2px 5px rgba(0.2, 0.2, 0.5, .1);
 }
 
@@ -103,7 +81,6 @@ export default {
   box-sizing: border-box;
   cursor: pointer;
   border-radius: 5px;
-  margin-left: auto;
 }
 
 .sc-header--close-button:hover {

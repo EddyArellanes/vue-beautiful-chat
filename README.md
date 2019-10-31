@@ -1,3 +1,11 @@
+# Fork Changes
+
+I have modded the original Behaviour of the Components, in fact I touched:
+-Header.vue: I change On click Header-title I changed the original function toggleUsers for onClose
+-Message.vue: I have added AttachmentMessage.vue
+-AttachmentMessage.vue: I have created a new Component that render a Carousel of Cards[Title, Description, Image and Buttons] thought to render information as Facebook.
+
+
 # vue-beautiful-chat
 
 `vue-beautiful-chat` provides an intercom-like chat window that can be included easily in any project for free. It provides no messaging facilities, only the view component.
